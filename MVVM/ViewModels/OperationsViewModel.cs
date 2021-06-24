@@ -106,6 +106,7 @@ namespace MVVM.ViewModels
         public ICommand Restar { protected set; get; }
         public ICommand Multiplicar { protected set; get; }
         public ICommand Dividir { protected set; get; }
+        public ICommand Limpiar { protected set; get; }
 
         #endregion
 
@@ -131,10 +132,23 @@ namespace MVVM.ViewModels
             {
                 if (Valor2 < 1)
                 {
+                    Valor1 = 0;
                     Valor2 = 1;
+
                 }
                 
                 ResultDivision = Valor1 / Valor2;
+            });
+
+            Limpiar = new Command(() =>
+            {
+                Valor1 = 0;
+                Valor2 = 0;
+                ResultSuma = 0;
+                ResultResta = 0;
+                ResultProducto = 0;
+                ResultDivision = 0;
+
             });
         }
         #endregion

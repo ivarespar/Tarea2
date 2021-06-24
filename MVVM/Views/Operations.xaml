@@ -1,26 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Operaciones"
+             Background="#404040"
              x:Class="MVVM.Views.Operations">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="plainButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="CadetBlue"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="BorderRadius" Value="0"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+            </Style>
+
+            <Style x:Key="cleanButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Crimson" ></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="BorderRadius" Value="0"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+            </Style>
+
+            <Style x:Key="plainEditor" TargetType="Editor">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" ></Setter>
+            </Style>
+
+            <Style x:Key="plainLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="FontSize" Value="30"></Setter>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" ></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Valor 1" />
-                <Editor Text="{Binding Valor1}"></Editor>
-                <Label Text="Valor 2" />
-                <Editor Text="{Binding Valor2}"></Editor>
-            </StackLayout>
+        <Grid x:Name="controlGrid" RowSpacing="10" ColumnSpacing="10" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Sumar" Command="{Binding Sumar}" />
-                <Label Text="{Binding ResultSuma}" />                
-            </StackLayout>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Label Text="Valor 1" Grid.Row="0" Grid.Column="0" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <Label Text="Valor 2" Grid.Row="0" Grid.Column="1" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Restar" Command="{Binding Restar}" />
-                <Label Text="{Binding ResultResta}" />
-            </StackLayout>
+            <Editor Text="{Binding Valor1}" Grid.Row="1" Grid.Column="0" Style="{StaticResource plainEditor}"></Editor>
+            <Editor Text="{Binding Valor2}" Grid.Row="1" Grid.Column="1" Style="{StaticResource plainEditor}"></Editor>
 
-        </StackLayout>
+            <Button Text="Sumar" Grid.Row="2" Grid.Column="0" Style="{StaticResource plainButton}" Command="{Binding Sumar}" />
+            <Label Text="{Binding ResultSuma}" Grid.Row="2" Grid.Column="1" Style="{StaticResource plainLabel}" ></Label>
+
+            <Button Text="Restar" Grid.Row="3" Grid.Column="0" Style="{StaticResource plainButton}"  Command="{Binding Restar}"/>
+            <Label Text="{Binding ResultResta}" Grid.Row="3" Grid.Column="1" Style="{StaticResource plainLabel}" ></Label>
+
+            <Button Text="Multiplicar" Grid.Row="4" Grid.Column="0" Style="{StaticResource plainButton}" Command="{Binding Multiplicar}"/>
+            <Label Text="{Binding ResultProducto}" Grid.Row="4" Grid.Column="1" Style="{StaticResource plainLabel}" ></Label>
+
+            <Button Text="Dividir" Grid.Row="5" Grid.Column="0" Style="{StaticResource plainButton}"  Command="{Binding Dividir}" />
+            <Label Text="{Binding ResultDivision}" Grid.Row="5" Grid.Column="1" Style="{StaticResource plainLabel}" ></Label>
+
+            <Button Text="Limpiar" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource cleanButton}"  Command="{Binding Limpiar}" />
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
