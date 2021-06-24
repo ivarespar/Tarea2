@@ -8,6 +8,7 @@ namespace MVVM.ViewModels
 {
     public class OperationsViewModel : ViewModelBase
     {
+        // Comentario de prueba
         #region Propiedades
         int valor1;
         public int Valor1
